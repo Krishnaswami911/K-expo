@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse Events – Discover and register for campus events</title>
+<meta name="description" content="Browse upcoming events, view details and register in seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a href="#" class="logo">pulse<span>.</span></a>
+  <nav>
+    <a href="#events">Events</a>
+    <button id="myRegBtn" class="link-btn">My registrations <b id="regCount">0</b></button>
+    <button id="themeBtn" class="icon-btn" aria-label="Toggle dark mode">🌓</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Find the next thing worth showing up for.</h1>
+      <p>Hackathons, concerts, workshops and more. Pick an event, register in under a minute.</p>
+      <a href="#events" class="btn">Browse events</a>
+    </div>
+    <div class="next-card" id="nextCard" aria-live="polite"></div>
+  </section>
+
+  <section id="events" class="events">
+    <h2>Upcoming events</h2>
+    <div class="tools">
+      <input id="search" type="search" placeholder="Search by name, venue or keyword" aria-label="Search events">
+      <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p id="empty" class="empty" hidden>No events match your search. Try another keyword or clear the filter.</p>
+  </section>
+</main>
+
+<footer>© 2026 Pulse Events · Built with HTML, CSS and JavaScript</footer>
+
+<dialog id="detailDlg"></dialog>
+
+<dialog id="regDlg">
+  <form id="regForm" novalidate>
+    <button type="button" class="close" data-close aria-label="Close">×</button>
+    <h3>Register for an event</h3>
+    <label>Full name
+      <input id="name" name="name" autocomplete="name">
+      <small class="err"></small>
+    </label>
+    <label>Email address
+      <input id="email" name="email" type="email" autocomplete="email">
+      <small class="err"></small>
+    </label>
+    <label>Phone number
+      <input id="phone" name="phone" type="tel" inputmode="numeric" placeholder="10-digit mobile number" autocomplete="tel">
+      <small class="err"></small>
+    </label>
+    <label>Event
+      <select id="eventSel" name="event"></select>
+      <small class="err"></small>
+    </label>
+    <button class="btn" type="submit">Confirm registration</button>
+  </form>
+  <div id="success" hidden>
+    <div class="tick">✓</div>
+    <h3>You're registered!</h3>
+    <p id="successMsg"></p>
+    <button class="btn" data-close>Done</button>
+  </div>
+</dialog>
+
+<dialog id="myDlg">
+  <button type="button" class="close" data-close aria-label="Close">×</button>
+  <h3>My registrations</h3>
+  <ul id="myList" class="mylist"></ul>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
